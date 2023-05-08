@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn bd_proyecto.wsgi
+web: gunicorn bd_proyecto.wsgi
