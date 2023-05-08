@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  
+    <link rel="stylesheet" href="./paranahuel.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Urbanist:wght@500&display=swap" rel="stylesheet">
+    <script src="./jquery.js"></script>
+    <script src="./main.js" defer></script>
+
+<!-- CDN Font Awesome-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Proyecto BD</title>
+</head>
+<body>
+    
+    <header>
+
+    </header>
+
+   
+        
+        <section class="main__container">
+
+            <div class="database">
+                    
+              
+               
+                <div class="btns">
+                    <h4 class="titulo_database">Database</h4>
+                 <!--   <a href="{% url 'inicio_refresh' %}">
+                        <button class="btn-1 btn_refresh">  Refresh</button>
+                    </a>-->
+
+                            <button class="btn-1 btn_refresh">  Refresh</button>
+                    <button id="btn-crear" class="btn-1 btn_crear_nuevo">  Crear nuevo</button>
+                </div>
+
+               
+                   
+                
+                    <div class="db__btn_container">
+
+                        <form action="" method="GET">
+                            <div>
+                                <input type="text" class='buscar_campo' placeholder="  buscar"  name="buscar" values="{{ request.GET.buscar }}">
+                               
+                            </div>
+                        
+                            </form>
+               
+                      
+                     
+                     
+
+
+                        <nav class="navBar">
+
+                            <ul class="menu__horizontal">
+                               
+                                <li>
+                                    <a href="" class="underline">Dueño</a>
+                                    <ul class="menu__vertical">
+                                        <li>
+                                            <form action="" method="GET">
+                                            <a href="{% url 'inicio' %}" class="underline"  values="az">A-Z</a>
+                                            <a href="{% url 'inicio_za' %}" class="underline">Z-A</a>
+                                        
+                                        </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                              
+                            </ul>
+                            </nav>
+                           <!-- <option value="">opcion 2</option>
+                            <a href="#"><option value="">opcion 3</option></a>-->
+                  
+                        
+                            <nav class="navBar">
+
+                                <ul class="menu__horizontal">
+                                   
+                                    <li>
+                                        <a href="" class="underline">Propiedades</a>
+                                        <ul class="menu__vertical">
+                                            <li>
+                                               
+                                                <a href="{% url 'inicio' %}" class="underline"  values="az">A-Z</a>
+                                                <a href="{% url 'inicio_za' %}" class="underline">Z-A</a>
+                                                <a href="{% url 'inicio_mascaro' %}" class="underline">Mas caro</a>
+                                                <a href="{% url 'inicio_masbarato' %}" class="underline">Mas Barato</a>
+                                              
+                                            </li>
+                                        </ul>
+                                    </li>
+                                  
+                                </ul>
+                                </nav>
+    
+                                <nav class="navBar">
+
+                                    <ul class="menu__horizontal">
+                                       
+                                        <li>
+                                            <a href="" class="underline">Caracteristicas</a>
+                                            <ul class="menu__vertical">
+                                                <li>
+                                                   
+                                                    <a href="{% url 'inicio_caracteristicas' %}" class="underline"  values="az">Ambientes</a>
+                                                    <a href="{% url 'inicio_za' %}" class="underline">D.Catastrales</a>
+                                                  
+                                                </li>
+                                            </ul>
+                                        </li>
+                                      
+                                    </ul>
+                                    </nav>
+
+                    </div>    
+            </div>
+            
+        {% block tabla %}
+
+            <div class="tabla__main">
+
+                <table>
+                   
+                    <thead>
+                        <th> <a href="{% url 'inicio_za' %}"> Dueño</th></a>
+                        <th>Direccion</th>
+                        <th>Localidad</th>
+                        <th>Estado</th>
+                        <th>Propiedad</th>
+                        <th>Tipo</th>
+                        <th> <a href="{% url 'inicio_mascaro' %}"> Precio</th></a>
+                        <th>Descripcion</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </thead>
+
+                    <tbody>
+                        {% for i in clientes %}
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>disponible</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+                        {% endfor %}
+
+                        
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>alquilado</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+                        
+
+                        
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>en alquiler</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>en venta</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>por vender</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+
+                        <tr>
+                          
+                           
+                            <td>{{ i.dueño }}</td>
+                            <td>{{ i.direccion }}</td>
+                            <td>{{ i.localidad}}</td>
+                            <td>vendido</td>
+                            <td>{{ i.propiedad }}</td>
+                            <td>{{ i.tipo }}</td>
+                            <td>{{ i.precio }}</td>
+                            <td>{{ i.descripcion}}</td>
+                          
+                            <td class='edit'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg></td>
+                            <td class='delete'><a  href="{% url 'delete' i.id %}"  id="{{ i.id }}" > <svg class='buttom_delete'  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(116, 116, 116);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg> </a></td>
+                       
+                        </tr>
+
+                </table>
+
+            </div>
+
+            {% endblock %}
+
+        </section>
+
+ 
+    <div id="ventana-modal" class="ventana-modal">
+
+        <div class="modal-contenido">
+
+            <div class="cabecera-modal">
+
+                <div class="titulo-modal">
+                    <h2>Cargar datos</h2>
+                </div>
+
+                <div id="cerrar" class="cerrar"><h2>X</h2></div>
+
+            </div>
+
+            <div class="form-modal">
+                <form id="formulario">
+                    <div>
+                        <label for="">Dueño</label>
+                        <div id="info1"></div>
+                        <input id="dueño" type="text">
+                    </div>
+                    <div>
+                        <label for="">Direccion</label>
+                        <div id="info2"></div>
+                        <input id="direccion" type="text">
+                    <div>
+                        <label for="">Localidad</label>
+                        <div id="info3"></div>
+                        <input id="localidad" type="text">
+                    </div>
+                    <div>
+                        <label for="">Estado</label>
+                        <select name="" id="estado">
+                            <option value="disponible">disponible</option>
+                            <option value="alquilado">alquilado</option>
+                            <option value="en alquiler">en alquiler</option>
+                            <option value="en venta">en venta</option>
+                            <option value="por vender">por vender</option>
+                            <option value="vendido">vendido</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="">Propiedad</label>
+                        <div id="info4"></div>
+                        <input id="propiedad" type="text">
+                    </div>
+                        <label for="">Tipo</label>
+                        <div id="info5"></div>
+                        <input id="tipo" type="text">
+                    </div>
+                    <div>
+                        <label for="">Precio</label>
+                        <div id="info6"></div>
+                        <input id="precio" type="number">
+                    </div>
+                        <label for="">Descripcion</label>
+                        <div id="info7"></div>
+                        <input id="descripcion" type="text">
+                    </div>
+                    <div id="btn-carga">
+                        <button id="btnCarga" type="submit">Cargar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>

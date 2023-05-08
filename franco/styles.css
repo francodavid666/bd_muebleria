@@ -1,0 +1,230 @@
+/* RESET DE LA WEB */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+    font-family: 'Urbanist', sans-serif;
+    
+
+  }
+/* MODIFICA EL HEADER */
+
+
+.dropdown:hover .dropdown-contenido{
+    display: block;
+    background-color: #F6F1F1;
+}
+
+.dropdown-contenido a{
+    display: block;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.dropdown-contenido a:hover{
+    background-color: #146C94;
+    color: white;
+}
+
+/*MODIFICO MAIN Y TABLA*/
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.main__container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(1,1fr);
+     
+    margin: 10px 10px 10px 10px;
+    width: 98%;
+    height: 95vh;
+    justify-content: center;
+    background-color: #e9e5e5;
+    border-radius: 10px;
+}
+
+.database{
+    grid-column: 1/4;
+    grid-row: 1/2;
+  
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,50px);
+    /*background-color:#19A7CE ;*/
+    height: 70%;
+    width: 95vw;
+   margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+}
+
+.titulo_database{
+ grid-column: 1/2;
+ grid-row: 0/1;
+ color: rgb(32, 32, 32);
+ font-size: 40px;
+ 
+
+}
+/*
+main .main__container .database nav {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}*/
+
+.btns{
+    grid-column: 1/4;
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+.btn_refresh{
+   
+   
+    border: none;
+    
+    border-radius: 5px;
+    background-color: aliceblue;
+    color: blue;
+    border: 2px solid blue;
+    grid-column: 2/3;
+    
+    margin-left: 90vh;
+    width:12vw;
+    height: 6vh;
+    
+}
+
+.btn_crear_nuevo{
+    margin-left: 30px;
+    width:12vw;
+    height: 6vh;
+    border: none;
+    height: 6vh;
+    border-radius: 5px;
+    background-color: blue;
+    color: white;
+}
+
+.db__btn_container{
+    grid-column: 1/4;
+    grid-row: 2/3;
+
+    height: 50px;
+
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ 
+
+ 
+ }
+.buscar_campo{
+    grid-column: 1/2;
+    border: none;
+    width: 300px;
+    height: 6vh;
+    border-radius: 5px;
+}
+
+.select__uno{
+    width:12vw;
+    height: 6vh;
+ 
+    border: none;
+    border-radius: 5px;
+}
+
+
+
+main .main__container .database nav h4{
+    margin: 10px 0 0 20px;
+    color: black;
+    font-size: 23px;
+}
+
+
+source.btn-2{
+    background-color: #1746A2;
+    color: white;
+    width: 8vw;
+    height: 3vh;
+    cursor: pointer;
+}
+
+main .main__container .filtro {
+    display: flex;
+    padding: 20px 0;
+    width: 68vw;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+main .main__container .filtro div input {
+    width: 15vw;
+    height: 3vh;
+}
+
+
+/*TABLA*/
+
+.tabla__main {
+    grid-row: 2/3;
+    grid-column: 1/4;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    margin: 10px auto;
+    margin-bottom: 10px;
+ 
+    width: 95vw;
+    height: 62vh;
+    justify-content: center;
+    border-radius: 10px ;
+}
+
+.tabla__main table {
+    margin-top: 20px;
+    table-layout: fixed;
+    width: 90vw;
+    height: 10vh;
+    border-collapse: collapse;
+    border-bottom: solid 1px #1d92d6;
+    text-align: left;
+}
+ 
+.tabla__main tr{
+    margin-bottom: 40PX;
+}
+main .tabla__main table thead th{
+    border-bottom: solid 1px #0795e7;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+main .tabla__main table tbody td{
+    border-bottom: solid 1px #b13016;
+    padding: 10px 0;
+    
+}
+
+.tabla__main td{
+    border-bottom: solid 0.5px #036ba7;
+    padding:4px 0;
+   
+   
+}
+
